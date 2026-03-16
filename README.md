@@ -81,7 +81,7 @@
 * prompt(Number()) **X** prompt 질문 입력 위치에 다른 함수 작성
 * Number(prompt()) **O** Number 괄호안은 변환대상 prompt함수작성가능
 ## toLocaleString()
-* 숫자를 해당된 나라에 맞게 변형시켜주는 함수.
+* 숫자를 해당된 국가에 맞게 변형시켜주는 함수.
 ## 함수
 * function 함수명(){재사용문법}
 ### 함수의 종류
@@ -97,3 +97,66 @@
 * `함수이름` 개발자가 만든 함수의 의미있는 이름을 작성한다.
 * `전달인자` 매개변수, 인수 등 여러가지 용어를 사용한다. 함수 내에 데이터를 전달하는 변수명이라 보면 되며 전달 데이터가 많을 땐 객체 타입으로 전달하기도 한다.
 * `중괄호 {}` 함수 영역의 시작과 끝을 나타내며 함수의 반복적인 실행 내용을 작성한다.
+# 함수
+## 1. 내장함수
+* js 내에 정의된 명령어
+* `prompt()` , `log()` 등..
+* `window.print();` 인쇄창 실행, 윈도우 생략 가능
+* `window.confirm();` 확인/취소 창 실행
+* `window.location.href();` 다른 경로 이동
+* `window.open('url','_blank');` 새창(새탭)열기
+* `window.alert();` 경고 메시지 띄우기
+## 2. 사용자정의함수
+* 함수준비 : `function 함수명(매개변수){반복 프로그래밍}`
+* 함수실행 : `함수명(매개변수);`
+    * 함수실행은 해당 함수 준비 `{}` 밖에서 해야한다!
+### 2-1. 매개변수
+* 반복되는 함수프로그래밍 안 데이터가 반복될때마다 달라질 때
+* 데이터의 반복개수만 생각해선 안되고 반복데이터가 같은지, 다른지를 판단해서 매개변수 수를 체크해야한다.
+    * `5x4=(5*4)` 5가 두번 반복되지만 값이 같으므로 매개변수는 1개
+    * `function 함수명(매개변수생성){매개변수대입받는위치}`
+    * `함수명(매개변수에 값을 대입하는위치);`
+## 3. 콜백함수 (함수종류(x), 사용방법(o))
+* 함수준비A : `function A(매개변수){반복 프로그래밍}`
+* 함수준비B : `function B(매개변수){반복 프로그래밍}`
+    * 함수B를 함수A가 실행되는 조건 기준 B를 실행하고 싶다. (싶을 때 )
+    * `function A(매개변수){ B(); }`
+    * `A();` //A가 실행되면 A안에 B가 함께 실행된다.
+## DOM 요소 선택하기
+* DOM이란 ? HTML태그부터 태그 안 텍스트, 공백 노드 포함하는 요소
+1. `get~`
+    * 실제 프로그래밍 사용 시 `query` 위주로 사용하나 레거시코드 또는 코드 벤치마킹 등 사용 시 이해와 활용을 돕기 위해 간단히 알면 좋은 DOM 선택방식
+    * `getElementsByTagName`
+        * `const 변수명 = document.getElementsByTagName('');`
+        * `변수명[index];`
+    * `getElementsByClassName`
+        * `const 변수명 = document.getElementsByClassName('');`
+        * `변수명[index];`
+    * `getElementByIdName`
+        * `const 변수명 = document.getElementByIdName('');`
+        * `변수명;` //아이디는 단 1 개이므로 인덱스 표시 필요없음.
+2. `query~`
+    * `querySelector`
+        * `const 변수명 = document.quertSelector('태그명');`
+        * `const 변수명 = document.quertSelector('.클래스명');`
+        * `const 변수명 = document.quertSelector('#아이디명');`
+        * `const 변수명 = document.quertSelector('대상:nth:child(1)');`
+        * `const 변수명 = document.quertSelector('부모요소 > 자식요소');`
+        * css와 유사하게 `()` 안 선택자를 작성할 수 있는 ES6 이후 DOM선택함수
+        * 태그, 클래스 대상은 실제 HTML에 2개 이상 존재하더라도 위 -> 아래 읽는 순서 기준 가장 먼저 인식되는 대상이 변수에 저장됨.
+    * `querySelectorAll`
+        * `const 변수명 = document.querySelectorAll('2개 이상 존재하는 태그명');`
+        * `const 변수명 = document.qeurySelectorAll('2개 이상 존재하는 클래스명');`
+        * 아이디에는 사용하지 않고 태그 또는 클래스가 같은 부모 요소 안 2개 이상 존재 시 해당 요소들을 필요에 따라 모두 선택해야할 때 All키워드를 함께 사용한다.
+        * `변수명[index];` // get~ 선택방식과 동일하게 인덱스로 2개 이상의 대상 구분 필요.
+## DOM + 이벤트연결
+1. `<태그 on이벤트="실행함수();"></태그>`
+    * `<button onclick="alert();">`
+    * 장점) 태그에 바로 이벤트를 작성할 수 있어서 간편함.
+    * 단점) 태그에 내부스크립트로 작성된거라 반복 등 활용 불가능. 내부에서만 제한적 사용.
+2. `DOM변수.addEventListener('이벤트', 실행함수());`
+    * `btn.addEnventListener('click',function(){ alert(); });`
+    * `btn.addEnventListener('click', func1);`
+    * `function func1(){}` 호출 하는 방식으로 사용 가능.
+    * 장점) 반복 활용 가능, 내부, 외부 어디든 자유롭게 사용 가능
+    * 단점) 위 1번에 비해 쓰기가 조금 복잡함.
