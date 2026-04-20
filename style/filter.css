@@ -1,0 +1,35 @@
+body {}
+main {
+    width:1200px; min-width:1024px; margin:50px auto 0;
+    padding:50px; background-color:#f5f5f5; position:relative;
+}
+main h1 {margin:0 0 15px; font-weight:600;}
+main .filter {
+    position:absolute; right:50px; top:50px;
+}
+main .filter .filter_view {font-size:0.85rem; background-color:#fff; padding:5px 20px;}
+main .filter .filter_view span {font-size:0.5rem;}
+main .filter_list {
+    display:flex; flex-flow:column nowrap;
+    background-color:#fff; box-shadow:0 0 10px rgba(0,0,0, 0.15);
+    border-bottom-left-radius: 10px;  /* border는 y축 -> x축 순서 */
+    border-bottom-right-radius: 10px; 
+    padding:10px;
+}
+main .filter_list .list {
+    line-height:2; font-size:0.75rem; padding:0 5px;
+}
+main .filter_list .list:hover {background-color: #f2f2f2;}
+main .filter_list .list1 {}
+main .filter_list .list2 {}
+main .filter_list .list3 {}
+main .contents {display:flex; gap:20px;}
+main .contents li {
+    flex:1; text-align:center; height:350px;
+    background-size:cover; background-position:center;
+}
+main .contents li:nth-child(1) {background-image: url(https://www.nongmin.com/-/raw/srv-nongmin/data2/content/image/2024/08/22/.cache/512/20240822500107.jpg);}
+main .contents li:nth-child(2) {background-image: url(https://imgnn.seoul.co.kr/img/upload/2016/07/08/SSI_20160708142213_V.jpg);}
+main .contents li:nth-child(3) {background-image: url(https://i-bloom.shop/cdn/shop/files/3_3eb69895-bbc8-4d32-b3f0-27660bd8b3ad.jpg?v=1714462433&width=1946);}
+main .contents li:nth-child(4) {background-image: url(https://img.freepik.com/premium-photo/carrot-isolated-white-background_355725-1009.jpg);}
+main .contents li a {display:block; height:100%;}
